@@ -5,10 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using SistemaChamadoHospital.Models.Usuario;
 using Npgsql;
-using SistemaChamadoHospitalPostgres.DaoPostgres;
 using SistemaChamadoHospital.Dao.UsuarioDao;
 
-namespace SistemaChamadoHospitalPostgres.DaoPostgres
+namespace SistemaChamadoHospitalPostgres.DaoPostgres.UsuarioDaoPostgres
 {
 
     public class UsuarioDao : IUsuarioDao
@@ -31,7 +30,7 @@ namespace SistemaChamadoHospitalPostgres.DaoPostgres
 
             using (var conn = Conexao.ObterConexao())
             {
-                var cmd = new NpgsqlCommand("SELECT id, nome, email, area_trabalho FROM usuario", conn);
+                var cmd = new NpgsqlCommand("SELECT id_usuario, nome, email, area_trabalho FROM usuario", conn);
                 using (var reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
@@ -45,7 +44,6 @@ namespace SistemaChamadoHospitalPostgres.DaoPostgres
                         });
                     }
                 }
-
                 return usuario;
             }
         }

@@ -17,11 +17,11 @@ namespace SistemaChamadoHospital.Service
             _solucaoDao = solucaoDao;
             _solucaoValidation = new SolucaoValidation();
         }
-        public void Inserir(string nome, DateTime dataSolucao, int idTecnico)
+        public void Inserir(string descricao, DateTime dataSolucao, int idTecnico)
         {
             var solucao = new Models.Solucao
             {
-                Nome = nome,
+                Descricao = descricao,
                 DataSolucao = dataSolucao,
                 IdTecnico = idTecnico
             };

@@ -9,7 +9,7 @@ namespace SistemaChamadoHospitalPostgres.DaoPostgres
 {
     public class Conexao
     {
-        private static string connString = "Host=localhost;Username=postgres;Password=dbadmin;Database=pim";
+        private static string connString = "Host=localhost;Username=postgres;Password=dbadmin;Database=sistemachamadohospital";
 
         public static NpgsqlConnection ObterConexao()
         {

@@ -11,8 +11,8 @@ namespace SistemaChamadoHospital.Validation
     {
         public void Validar(Solucao s)
         {
-        if (string.IsNullOrWhiteSpace(s.Nome))
-            throw new ArgumentException("Nome é obrigatório.");
+        if (string.IsNullOrWhiteSpace(s.Descricao))
+            throw new ArgumentException("Descricao é obrigatório.");
 
         if (s.DataSolucao == DateTime.MinValue)
             throw new ArgumentException("Data de resolução inválida.");
