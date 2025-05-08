@@ -13,8 +13,6 @@ namespace SistemaChamadoHospital.Dao
         List<Chamado> ListarTodos();
         void Atualizar(Chamado chamado);
         void Deletar(int id);
-        public Chamado ObterPorId(int id);
-
         void AtualizarStatusFechamento(int idChamado, DateTime dataFechamento);
 
     }

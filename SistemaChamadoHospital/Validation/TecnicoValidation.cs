@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SistemaChamadoHospital.Models.Tecnico;
+using SistemaChamadoHospital.Models;
 
-namespace SistemaChamadoHospital.Validation.TecnicoValidation
+namespace SistemaChamadoHospital.Validation
 {
     public class TecnicoValidation
     {

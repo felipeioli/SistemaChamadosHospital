@@ -42,9 +42,8 @@ namespace SistemaChamadoHospitalPostgres.DaoPostgres
                             DataAbertura = reader.GetDateTime(4),
                             DataFechamento = reader.GetDateTime(5),
                             IdUsuario = reader.GetInt32(6),
-                            IdSetor = reader.GetInt32(7),
-                            IdEquipamento = reader.GetInt32(8),
-                            IdSolucao = reader.GetInt32(9)
+                            IdEquipamento = reader.GetInt32(7),
+                            IdSolucao = reader.GetInt32(8)
                         });
                     }
                 }
@@ -72,36 +71,6 @@ namespace SistemaChamadoHospitalPostgres.DaoPostgres
                 cmd.Parameters.AddWithValue("id", id);
                 cmd.ExecuteNonQuery();
             }
-        }
-
-        public Chamado ObterPorId(int id)
-        {
-            Chamado chamado = null;
-            using (var conn = Conexao.ObterConexao())
-            {
-                var cmd = new NpgsqlCommand("SELECT * FROM chamado WHERE id = @id", conn);
-                cmd.Parameters.AddWithValue("id", id);
-                using (var reader = cmd.ExecuteReader())
-                {
-                    if (reader.Read())
-                    {
-                        chamado = new Chamado
-                        {
-                            Id = reader.GetInt32(0),
-                            Status = reader.GetString(1),
-                            Prioridade = reader.GetString(2),
-                            Descricao = reader.GetString(3),
-                            DataAbertura = reader.GetDateTime(4),
-                            DataFechamento = reader.GetDateTime(5),
-                            IdUsuario = reader.GetInt32(6),
-                            IdSetor = reader.GetInt32(7),
-                            IdEquipamento = reader.GetInt32(8),
-                            IdSolucao = reader.GetInt32(9)
-                        };
-                    }
-                }
-            }
-            return chamado;
         }
 
 

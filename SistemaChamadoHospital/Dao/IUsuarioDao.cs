@@ -7,9 +7,9 @@ using SistemaChamadoHospital.Models;
 
 namespace SistemaChamadoHospital.Dao
 {
-    public interface ISetorDao
+    public interface IUsuarioDao
     {
-        void Inserir(Setor setor);
-        public List<Setor> ListarTodos();
+        public void Inserir(Usuario u);
+        public List<Usuario> ListarTodos();
     }
 }

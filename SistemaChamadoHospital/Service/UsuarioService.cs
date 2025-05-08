@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SistemaChamadoHospital.Dao;
-using SistemaChamadoHospital.Dao.UsuarioDao;
-using SistemaChamadoHospital.Models.Usuario;
+using SistemaChamadoHospital.Models;
 using SistemaChamadoHospital.Validation;
-using SistemaChamadoHospital.Validation.UsuarioValidation;
 
-namespace SistemaChamadoHospital.Service.UsuarioService1
+namespace SistemaChamadoHospital.Service
 {
     public class UsuarioService
     {

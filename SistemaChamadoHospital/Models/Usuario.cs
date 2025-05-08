@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace SistemaChamadoHospital.Models
 {
-    public class Setor
+    public class Usuario
     {
 
         public int Id { get; set; }
         public string Nome { get; set; }
-        public string Local { get; set; }
+        public string Email { get; set; }
+        public string AreaTrabalho { get; set; }
 
     }
 }

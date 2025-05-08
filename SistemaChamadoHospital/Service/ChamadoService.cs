@@ -20,7 +20,7 @@ namespace SistemaChamadoHospital.Service
             _chamadoValidation = new ChamadoValidation();
         }
 
-        public void Inserir(string status, string prioridade, string descricao, DateTime dataAbertura, int idEquipamento, int idSetor, int idSolucao, int idUsuario)
+        public void Inserir(string status, string prioridade, string descricao, DateTime dataAbertura, int idEquipamento, int idSolucao, int idUsuario)
         {
             var chamado = new Chamado
             {
@@ -29,7 +29,6 @@ namespace SistemaChamadoHospital.Service
                 Descricao = descricao,
                 DataAbertura = dataAbertura,
                 IdEquipamento = idEquipamento,
-                IdSetor = idSetor,
                 IdSolucao = idSolucao,
                 IdUsuario = idUsuario
             };
@@ -61,10 +60,6 @@ namespace SistemaChamadoHospital.Service
             _chamadoDao.Deletar(id);
         }
 
-        public Chamado ObterChamadoPorId(int id)
-        {
-            return _chamadoDao.ObterPorId(id);
-        }
 
         public void AtualizarStatusFechamento(int idChamado, DateTime dataFechamento)
         {

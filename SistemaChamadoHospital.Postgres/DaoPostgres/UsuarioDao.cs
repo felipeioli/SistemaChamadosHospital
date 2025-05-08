@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SistemaChamadoHospital.Models.Usuario;
 using Npgsql;
-using SistemaChamadoHospital.Dao.UsuarioDao;
+using SistemaChamadoHospital.Dao;
+using SistemaChamadoHospital.Models;
 
-namespace SistemaChamadoHospitalPostgres.DaoPostgres.UsuarioDaoPostgres
+namespace SistemaChamadoHospitalPostgres.DaoPostgres
 {
 
     public class UsuarioDao : IUsuarioDao

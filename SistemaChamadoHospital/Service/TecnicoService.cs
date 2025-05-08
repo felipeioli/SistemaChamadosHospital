@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SistemaChamadoHospital.Dao.TecnicoDao;
-using SistemaChamadoHospital.Validation.TecnicoValidation;
+using SistemaChamadoHospital.Dao;
+using SistemaChamadoHospital.Models;
+using SistemaChamadoHospital.Validation;
 
-namespace SistemaChamadoHospital.Service.TecnicoService
+namespace SistemaChamadoHospital.Service
 {
     public class TecnicoService
     {
@@ -21,7 +22,7 @@ namespace SistemaChamadoHospital.Service.TecnicoService
 
         public void Inserir(string nome, string especialidade)
         {
-            var tecnico = new Models.Tecnico.Tecnico
+            var tecnico = new Tecnico
             {
                 Nome = nome,
                 Especialidade = especialidade
@@ -30,7 +31,7 @@ namespace SistemaChamadoHospital.Service.TecnicoService
             _tecnicoDao.Inserir(tecnico);
         }
 
-        public List<Models.Tecnico.Tecnico> ListarTodos()
+        public List<Tecnico> ListarTodos()
         {
             return _tecnicoDao.ListarTodos();
         }

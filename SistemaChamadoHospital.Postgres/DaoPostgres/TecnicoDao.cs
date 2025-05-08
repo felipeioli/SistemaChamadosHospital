@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Npgsql;
-using SistemaChamadoHospital.Dao.TecnicoDao;
-using SistemaChamadoHospital.Models.Tecnico;
-using SistemaChamadoHospital.Models.Usuario;
+using SistemaChamadoHospital.Dao;
+using SistemaChamadoHospital.Models;
 
-namespace SistemaChamadoHospitalPostgres.DaoPostgres.TecnicoDaoPostgres
+namespace SistemaChamadoHospitalPostgres.DaoPostgres
 {
     public class TecnicoDao : ITecnicoDao
     {

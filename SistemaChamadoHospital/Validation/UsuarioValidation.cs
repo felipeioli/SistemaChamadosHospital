@@ -7,14 +7,16 @@ using SistemaChamadoHospital.Models;
 
 namespace SistemaChamadoHospital.Validation
 {
-    public class SetorValidation
+    public class UsuarioValidation
     {
-        public void Validar(Setor s)
+        public void Validar(Usuario u)
         {
-            if (string.IsNullOrWhiteSpace(s.Nome))
+            if (string.IsNullOrWhiteSpace(u.Nome))
                 throw new ArgumentException("Nome é obrigatório.");
-            if (string.IsNullOrWhiteSpace(s.Local))
-                throw new ArgumentException("Local é obrigatório.");
+
+            if (string.IsNullOrWhiteSpace(u.Email))
+                throw new ArgumentException("Email é obrigatório.");
         }
     }
+
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SistemaChamadoHospital.Models.Tecnico
+namespace SistemaChamadoHospital.Models
 {
     public class Tecnico
     {
