@@ -59,7 +59,7 @@ namespace SistemaChamadoHospitalPostgres.DaoPostgres
                 cmd.Parameters.AddWithValue("status", chamado.Status);
                 cmd.Parameters.AddWithValue("prioridade", chamado.Prioridade);
                 cmd.Parameters.AddWithValue("descricao", chamado.Descricao);
-                cmd.Parameters.AddWithValue("id_chamado", chamado.Id);
+                cmd.Parameters.AddWithValue("id", chamado.Id);
             }
         }
 

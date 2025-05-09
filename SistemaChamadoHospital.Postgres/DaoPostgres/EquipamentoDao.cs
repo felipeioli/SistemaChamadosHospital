@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Npgsql;
 using SistemaChamadoHospital.Dao;
 using SistemaChamadoHospital.Models;
-using SistemaChamadoHospital.Models.Usuario;
 
 namespace SistemaChamadoHospitalPostgres.DaoPostgres
 {
