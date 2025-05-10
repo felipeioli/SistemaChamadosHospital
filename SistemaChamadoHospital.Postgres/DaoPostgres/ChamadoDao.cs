@@ -44,9 +44,9 @@ namespace SistemaChamadoHospitalPostgres.DaoPostgres
                             Prioridade = reader.GetString(2),
                             Descricao = reader.GetString(3),
                             DataAbertura = reader.GetDateTime(4),
-                            DataFechamento = reader.GetDateTime(5),
+                            DataFechamento = reader.IsDBNull(5) ? (DateTime?)null : reader.GetDateTime(5),
                             IdUsuario = reader.GetInt32(6),
-                            IdSolucao = reader.GetInt32(7)
+                            IdSolucao = reader.IsDBNull(7) ? null : reader.GetInt32(7)
                         });
                     }
                 }
