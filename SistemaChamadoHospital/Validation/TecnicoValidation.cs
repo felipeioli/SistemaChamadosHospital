@@ -14,8 +14,8 @@ namespace SistemaChamadoHospital.Validation
             if (string.IsNullOrWhiteSpace(t.Nome))
                 throw new ArgumentException("Nome é obrigatório.");
 
-            if (string.IsNullOrWhiteSpace(t.Especialidade))
-                throw new ArgumentException("Especialidade é obrigatória.");
+            if (string.IsNullOrWhiteSpace(t.Email))
+                throw new ArgumentException("Email é obrigatório.");
         }
     }
 }

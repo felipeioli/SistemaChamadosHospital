@@ -63,7 +63,7 @@ namespace SistemaChamadoHospitalWinForms
             else if (tipo == "Técnico")
             {
                 var tecnicos = new TecnicoService(new TecnicoDao()).ListarTodos();
-                var tecnico = tecnicos.FirstOrDefault(t => t.Nome.ToLower() == email.ToLower());
+                var tecnico = tecnicos.FirstOrDefault(t => t.Email.ToLower() == email.ToLower());
                 if (tecnico != null)
                 {
                     Sessao.Id = tecnico.Id;

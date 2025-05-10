@@ -76,6 +76,7 @@
             btnCadastrar.TabIndex = 4;
             btnCadastrar.Text = "Cadastrar Chamado";
             btnCadastrar.UseVisualStyleBackColor = true;
+            btnCadastrar.Click += btnCadastrar_Click;
             // 
             // CadastroChamadoForm
             // 

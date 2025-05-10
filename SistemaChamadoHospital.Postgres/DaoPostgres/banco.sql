@@ -8,7 +8,7 @@ area_trabalho VARCHAR(35)
 CREATE TABLE tecnico(
 id_tecnico SERIAL PRIMARY KEY,
 nome VARCHAR(50) NOT NULL,
-especialidade VARCHAR(35)
+email VARCHAR(50)
 );
 
 CREATE TABLE equipamento(

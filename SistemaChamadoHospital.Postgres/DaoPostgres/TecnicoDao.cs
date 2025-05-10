@@ -15,9 +15,9 @@ namespace SistemaChamadoHospitalPostgres.DaoPostgres
         {
             using (var conn = Conexao.ObterConexao())
             {
-                var cmd = new NpgsqlCommand("INSERT INTO tecnico (nome, especialidade) VALUES (@nome, @especialidade)", conn);
+                var cmd = new NpgsqlCommand("INSERT INTO tecnico (nome, email) VALUES (@nome, @email)", conn);
                 cmd.Parameters.AddWithValue("nome", tecnico.Nome);
-                cmd.Parameters.AddWithValue("especialidade", tecnico.Especialidade);
+                cmd.Parameters.AddWithValue("especialidade", tecnico.Email);
 
             }
         }
@@ -28,7 +28,7 @@ namespace SistemaChamadoHospitalPostgres.DaoPostgres
 
             using (var conn = Conexao.ObterConexao())
             {
-                var cmd = new NpgsqlCommand("SELECT id_tecnico, nome, especialidade FROM tecnico", conn);
+                var cmd = new NpgsqlCommand("SELECT id_tecnico, nome, email FROM tecnico", conn);
                 using (var reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
@@ -37,7 +37,7 @@ namespace SistemaChamadoHospitalPostgres.DaoPostgres
                         {
                             Id = reader.GetInt32(0),
                             Nome = reader.GetString(1),
-                            Especialidade = reader.GetString(2)
+                            Email = reader.GetString(2)
                         });
                     }
                 }
