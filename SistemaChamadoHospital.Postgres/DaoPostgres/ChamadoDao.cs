@@ -67,6 +67,36 @@ namespace SistemaChamadoHospitalPostgres.DaoPostgres
             }
         }
 
+        public List<Chamado> ListarPorUsuario(int idUsuario)
+        {
+            var chamados = new List<Chamado>();
+            using (var conn = Conexao.ObterConexao())
+            {
+                var cmd = new NpgsqlCommand("SELECT * FROM chamado WHERE fk_usuario_id_usuario = @idUsuario", conn);
+                cmd.Parameters.AddWithValue("idUsuario", idUsuario);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        chamados.Add(new Chamado
+                        {
+                            Id = reader.GetInt32(0),
+                            Status = reader.GetString(1),
+                            Prioridade = reader.GetString(2),
+                            Descricao = reader.GetString(3),
+                            DataAbertura = reader.GetDateTime(4),
+                            DataFechamento = reader.IsDBNull(5) ? (DateTime?)null : reader.GetDateTime(5),
+                            IdUsuario = reader.GetInt32(6),
+                            IdSolucao = reader.IsDBNull(7) ? null : reader.GetInt32(7)
+                        });
+                    }
+                }
+            }
+            return chamados;
+        }
+
+
         public void Deletar(int id)
         {
             using (var conn = Conexao.ObterConexao())

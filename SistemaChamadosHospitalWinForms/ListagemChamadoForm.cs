@@ -25,9 +25,25 @@ namespace SistemaChamadoHospitalWinForms
             try
             {
                 var service = new ChamadoService(new ChamadoDao());
-                List<Chamado> lista = service.ListarTodos();
+                List<Chamado> listaChamados;
 
-                dgvChamados.DataSource = lista;
+                if (Sessao.Tipo == "usuario")
+                {
+                    listaChamados = service.ListarPorUsuario(Sessao.Id);
+                }
+                else
+                {
+                    listaChamados = service.ListarTodos();
+                }
+
+                dgvChamados.DataSource = listaChamados;
+
+                // Oculta colunas que não devem aparecer na listagem
+                if (dgvChamados.Columns.Contains("IdUsuario"))
+                    dgvChamados.Columns["IdUsuario"].Visible = false;
+
+                if (dgvChamados.Columns.Contains("IdSolucao"))
+                    dgvChamados.Columns["IdSolucao"].Visible = false;
             }
             catch (Exception ex)
             {

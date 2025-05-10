@@ -54,6 +54,11 @@ namespace SistemaChamadoHospital.Service
             _chamadoDao.Atualizar(chamado);
         }
 
+        public List<Chamado> ListarPorUsuario(int idUsuario)
+        {
+            return _chamadoDao.ListarPorUsuario(idUsuario);
+        }
+
         public void DeletarChamado(int id)
         {
             _chamadoDao.Deletar(id);

@@ -12,6 +12,7 @@ namespace SistemaChamadoHospital.Dao
         void Inserir(Chamado chamado);
         List<Chamado> ListarTodos();
         void Atualizar(Chamado chamado);
+        public List<Chamado> ListarPorUsuario(int idUsuario);
         void Deletar(int id);
         void AtualizarStatusFechamento(int idChamado, DateTime dataFechamento);
 
