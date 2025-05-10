@@ -25,9 +25,6 @@ namespace SistemaChamadoHospital.Validation
 
             if (c.IdUsuario <= 0)
                 throw new ArgumentException("ID do usuário inválido.");
-
-            if (c.IdEquipamento <= 0)
-                throw new ArgumentException("ID do equipamento inválido.");
         }
     }
 

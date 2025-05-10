@@ -15,37 +15,54 @@ namespace SistemaChamadoHospitalPostgres.DaoPostgres
 
         public void Inserir(Usuario u)
         {
-            using (var conn = Conexao.ObterConexao())
+            try
             {
-                var cmd = new NpgsqlCommand("INSERT INTO usuario (nome, email, area_trabalho) VALUES (@nome, @email, @area_trabalho)", conn);
-                cmd.Parameters.AddWithValue("nome", u.Nome);
-                cmd.Parameters.AddWithValue("email", u.Email);
-                cmd.Parameters.AddWithValue("area_trabalho", u.AreaTrabalho);
+                using (var conn = Conexao.ObterConexao())
+                {
+                    var cmd = new NpgsqlCommand("INSERT INTO usuario (nome, email, area_trabalho) VALUES (@nome, @email, @area_trabalho)", conn);
+                    cmd.Parameters.AddWithValue("nome", u.Nome);
+                    cmd.Parameters.AddWithValue("email", u.Email);
+                    cmd.Parameters.AddWithValue("area_trabalho", u.AreaTrabalho);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao inserir usuário no banco de dados: " + ex.Message, ex);
             }
         }
 
         public List<Usuario> ListarTodos()
         {
-            List<Usuario> usuario = new List<Usuario>();
+            var usuarios = new List<Usuario>();
 
-            using (var conn = Conexao.ObterConexao())
+            try
             {
-                var cmd = new NpgsqlCommand("SELECT id_usuario, nome, email, area_trabalho FROM usuario", conn);
-                using (var reader = cmd.ExecuteReader())
+                using (var conn = Conexao.ObterConexao())
                 {
-                    while (reader.Read())
+                    var cmd = new NpgsqlCommand("SELECT id_usuario, nome, email, area_trabalho FROM usuario", conn);
+                    using (var reader = cmd.ExecuteReader())
                     {
-                        usuario.Add(new Usuario
+                        while (reader.Read())
                         {
-                            Id = reader.GetInt32(0),
-                            Nome = reader.GetString(1),
-                            Email = reader.GetString(2),
-                            AreaTrabalho = reader.GetString(3)
-                        });
+                            usuarios.Add(new Usuario
+                            {
+                                Id = reader.GetInt32(0),
+                                Nome = reader.GetString(1),
+                                Email = reader.GetString(2),
+                                AreaTrabalho = reader.GetString(3)
+                            });
+                        }
                     }
                 }
-                return usuario;
             }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao listar usuários: " + ex.Message, ex);
+            }
+
+            return usuarios;
         }
     }
 }

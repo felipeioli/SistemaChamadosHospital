@@ -90,7 +90,7 @@
             Controls.Add(txtEmail);
             Controls.Add(lblEmail);
             Name = "LoginForm";
-            Text = "Form1";
+            Text = "Tela de Login";
             Load += LoginForm_Load;
             ResumeLayout(false);
             PerformLayout();

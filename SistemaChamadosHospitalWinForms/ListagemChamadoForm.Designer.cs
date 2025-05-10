@@ -64,7 +64,7 @@
             Controls.Add(dgvChamados);
             Margin = new Padding(3, 4, 3, 4);
             Name = "ListagemChamadoForm";
-            Text = "Form1";
+            Text = "Tela de Listagem de Chamados";
             ((System.ComponentModel.ISupportInitialize)dgvChamados).EndInit();
             ResumeLayout(false);
 

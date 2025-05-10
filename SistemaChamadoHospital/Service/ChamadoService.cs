@@ -20,7 +20,7 @@ namespace SistemaChamadoHospital.Service
             _chamadoValidation = new ChamadoValidation();
         }
 
-        public void Inserir(string status, string prioridade, string descricao, DateTime dataAbertura, int idEquipamento, int idSolucao, int idUsuario)
+        public void Inserir(string status, string prioridade, string descricao, DateTime dataAbertura, int idSolucao, int idUsuario)
         {
             var chamado = new Chamado
             {
@@ -28,7 +28,6 @@ namespace SistemaChamadoHospital.Service
                 Prioridade = prioridade,
                 Descricao = descricao,
                 DataAbertura = dataAbertura,
-                IdEquipamento = idEquipamento,
                 IdSolucao = idSolucao,
                 IdUsuario = idUsuario
             };

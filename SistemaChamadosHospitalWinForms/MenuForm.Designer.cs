@@ -76,7 +76,7 @@
             Controls.Add(btnCadastrarChamado);
             Margin = new Padding(3, 4, 3, 4);
             Name = "MenuForm";
-            Text = "Form1";
+            Text = "Menu";
             Load += MenuForm_Load;
             ResumeLayout(false);
 

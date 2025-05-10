@@ -57,7 +57,7 @@
             btnFechar.TabIndex = 2;
             btnFechar.Text = "Fechar Chamado\n\n";
             btnFechar.UseVisualStyleBackColor = true;
-            btnFechar.Click += this.btnFechar_Click;
+            btnFechar.Click += btnFechar_Click;
             // 
             // FechamentoChamadoForm
             // 
@@ -68,7 +68,7 @@
             Controls.Add(txtIdChamado);
             Controls.Add(lblIdChamado);
             Name = "FechamentoChamadoForm";
-            Text = "Form1";
+            Text = "Tela de Fechar Chamado";
             ResumeLayout(false);
             PerformLayout();
         }

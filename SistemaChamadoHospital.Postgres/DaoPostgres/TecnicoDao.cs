@@ -13,36 +13,54 @@ namespace SistemaChamadoHospitalPostgres.DaoPostgres
     {
         public void Inserir(Tecnico tecnico)
         {
-            using (var conn = Conexao.ObterConexao())
+            try
             {
-                var cmd = new NpgsqlCommand("INSERT INTO tecnico (nome, email) VALUES (@nome, @email)", conn);
-                cmd.Parameters.AddWithValue("nome", tecnico.Nome);
-                cmd.Parameters.AddWithValue("especialidade", tecnico.Email);
+                using (var conn = Conexao.ObterConexao())
+                {
+                    var cmd = new NpgsqlCommand(
+                        "INSERT INTO tecnico (nome, email) VALUES (@nome, @email)", conn);
 
+                    cmd.Parameters.AddWithValue("nome", tecnico.Nome);
+                    cmd.Parameters.AddWithValue("email", tecnico.Email);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao inserir técnico no banco de dados: " + ex.Message, ex);
             }
         }
 
         public List<Tecnico> ListarTodos()
         {
-            List<Tecnico> tecnico = new List<Tecnico>();
+            var tecnicos = new List<Tecnico>();
 
-            using (var conn = Conexao.ObterConexao())
+            try
             {
-                var cmd = new NpgsqlCommand("SELECT id_tecnico, nome, email FROM tecnico", conn);
-                using (var reader = cmd.ExecuteReader())
+                using (var conn = Conexao.ObterConexao())
                 {
-                    while (reader.Read())
+                    var cmd = new NpgsqlCommand("SELECT id_tecnico, nome, email FROM tecnico", conn);
+                    using (var reader = cmd.ExecuteReader())
                     {
-                        tecnico.Add(new Tecnico
+                        while (reader.Read())
                         {
-                            Id = reader.GetInt32(0),
-                            Nome = reader.GetString(1),
-                            Email = reader.GetString(2)
-                        });
+                            tecnicos.Add(new Tecnico
+                            {
+                                Id = reader.GetInt32(0),
+                                Nome = reader.GetString(1),
+                                Email = reader.GetString(2)
+                            });
+                        }
                     }
                 }
-                return tecnico;
             }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao listar técnicos: " + ex.Message, ex);
+            }
+
+            return tecnicos;
         }
     }
  }

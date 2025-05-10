@@ -89,7 +89,7 @@
             Controls.Add(txtDescricao);
             Controls.Add(lblDescricao);
             Name = "CadastroChamadoForm";
-            Text = "Form1";
+            Text = "Tela de Cadastro de Chamado";
             Load += CadastroChamadoForm_Load;
             ResumeLayout(false);
             PerformLayout();

@@ -42,8 +42,7 @@ namespace SistemaChamadoHospitalPostgres.DaoPostgres
                             DataAbertura = reader.GetDateTime(4),
                             DataFechamento = reader.GetDateTime(5),
                             IdUsuario = reader.GetInt32(6),
-                            IdEquipamento = reader.GetInt32(7),
-                            IdSolucao = reader.GetInt32(8)
+                            IdSolucao = reader.GetInt32(7)
                         });
                     }
                 }

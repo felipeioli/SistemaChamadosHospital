@@ -20,15 +20,9 @@ namespace SistemaChamadoHospital.Service
             _tecnicoValidation = new TecnicoValidation();
         }
 
-        public void Inserir(string nome, string email)
+        public void Inserir(Tecnico t)
         {
-            var tecnico = new Tecnico
-            {
-                Nome = nome,
-                Email = email
-            };
-            _tecnicoValidation.Validar(tecnico);
-            _tecnicoDao.Inserir(tecnico);
+            _tecnicoDao.Inserir(t);
         }
 
         public List<Tecnico> ListarTodos()

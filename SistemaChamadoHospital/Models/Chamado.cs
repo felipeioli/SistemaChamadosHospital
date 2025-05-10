@@ -16,7 +16,6 @@ namespace SistemaChamadoHospital.Models
         public DateTime? DataFechamento { get; set; }
 
         public int IdUsuario { get; set; }
-        public int IdEquipamento { get; set; }
         public int? IdSolucao { get; set; }
     }
 }
