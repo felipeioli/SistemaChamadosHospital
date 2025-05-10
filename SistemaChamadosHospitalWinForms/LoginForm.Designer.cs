@@ -33,6 +33,7 @@
             label2 = new Label();
             cmbTipo = new ComboBox();
             btnEntrar = new Button();
+            lklRegistrar = new LinkLabel();
             SuspendLayout();
             // 
             // lblEmail
@@ -71,7 +72,7 @@
             // 
             // btnEntrar
             // 
-            btnEntrar.Location = new Point(356, 265);
+            btnEntrar.Location = new Point(356, 276);
             btnEntrar.Name = "btnEntrar";
             btnEntrar.Size = new Size(94, 29);
             btnEntrar.TabIndex = 4;
@@ -79,11 +80,23 @@
             btnEntrar.UseVisualStyleBackColor = true;
             btnEntrar.Click += btnEntrar_Click;
             // 
+            // lklRegistrar
+            // 
+            lklRegistrar.AutoSize = true;
+            lklRegistrar.Location = new Point(372, 242);
+            lklRegistrar.Name = "lklRegistrar";
+            lklRegistrar.Size = new Size(68, 20);
+            lklRegistrar.TabIndex = 5;
+            lklRegistrar.TabStop = true;
+            lklRegistrar.Text = "Registrar";
+            lklRegistrar.LinkClicked += lklRegistrar_LinkClicked;
+            // 
             // LoginForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(796, 450);
+            Controls.Add(lklRegistrar);
             Controls.Add(btnEntrar);
             Controls.Add(cmbTipo);
             Controls.Add(label2);
@@ -103,5 +116,6 @@
         private Label label2;
         private ComboBox cmbTipo;
         private Button btnEntrar;
+        private LinkLabel lklRegistrar;
     }
 }

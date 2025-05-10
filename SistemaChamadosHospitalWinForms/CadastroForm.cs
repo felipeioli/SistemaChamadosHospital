@@ -96,6 +96,13 @@ namespace SistemaChamadoHospitalWinForms
             txtAreaTrabalho.Visible = mostrarAreaTrabalho;
             lblAreaTrabalho.Visible = mostrarAreaTrabalho;
         }
+
+        private void lklTelaLogin_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            LoginForm loginForm = new LoginForm();
+            loginForm.ShowDialog();
+            this.Close();
+        }
     }
 }
 

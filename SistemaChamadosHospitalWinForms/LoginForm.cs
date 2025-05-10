@@ -82,5 +82,12 @@ namespace SistemaChamadoHospitalWinForms
                 }
             }
         }
+
+        private void lklRegistrar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            CadastroForm formCadastro = new CadastroForm();
+            formCadastro.ShowDialog();
+            this.Hide();
+        }
     }
 }

@@ -37,12 +37,13 @@
             btnSalvar = new Button();
             lblAreaTrabalho = new Label();
             txtAreaTrabalho = new TextBox();
+            lklTelaLogin = new LinkLabel();
             SuspendLayout();
             // 
             // lblNome
             // 
             lblNome.AutoSize = true;
-            lblNome.Location = new Point(255, 48);
+            lblNome.Location = new Point(255, 51);
             lblNome.Name = "lblNome";
             lblNome.Size = new Size(53, 20);
             lblNome.TabIndex = 0;
@@ -51,7 +52,7 @@
             // lblEmail
             // 
             lblEmail.AutoSize = true;
-            lblEmail.Location = new Point(255, 128);
+            lblEmail.Location = new Point(255, 145);
             lblEmail.Name = "lblEmail";
             lblEmail.Size = new Size(49, 20);
             lblEmail.TabIndex = 1;
@@ -68,7 +69,7 @@
             // 
             // txtNome
             // 
-            txtNome.Location = new Point(255, 71);
+            txtNome.Location = new Point(255, 83);
             txtNome.Name = "txtNome";
             txtNome.Size = new Size(125, 27);
             txtNome.TabIndex = 3;
@@ -91,7 +92,7 @@
             // 
             // btnSalvar
             // 
-            btnSalvar.Location = new Point(255, 395);
+            btnSalvar.Location = new Point(255, 411);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.Size = new Size(94, 29);
             btnSalvar.TabIndex = 6;
@@ -115,11 +116,23 @@
             txtAreaTrabalho.Size = new Size(125, 27);
             txtAreaTrabalho.TabIndex = 8;
             // 
+            // lklTelaLogin
+            // 
+            lklTelaLogin.AutoSize = true;
+            lklTelaLogin.Location = new Point(255, 374);
+            lklTelaLogin.Name = "lklTelaLogin";
+            lklTelaLogin.Size = new Size(170, 20);
+            lklTelaLogin.TabIndex = 9;
+            lklTelaLogin.TabStop = true;
+            lklTelaLogin.Text = "Voltar para tela de login";
+            lklTelaLogin.LinkClicked += lklTelaLogin_LinkClicked;
+            // 
             // CadastroForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 499);
+            Controls.Add(lklTelaLogin);
             Controls.Add(txtAreaTrabalho);
             Controls.Add(lblAreaTrabalho);
             Controls.Add(btnSalvar);
@@ -147,5 +160,6 @@
         private Button btnSalvar;
         private Label lblAreaTrabalho;
         private TextBox txtAreaTrabalho;
+        private LinkLabel lklTelaLogin;
     }
 }
