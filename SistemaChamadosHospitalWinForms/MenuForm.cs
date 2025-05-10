@@ -18,7 +18,7 @@ namespace SistemaChamadoHospitalWinForms
             InitializeComponent();
         }
 
-        private void btnCadastroChamado_Click(object sender, EventArgs e)
+        private void btnCadastrarChamado_Click(object sender, EventArgs e)
         {
             var form = new CadastroChamadoForm();
             form.ShowDialog();

@@ -22,6 +22,9 @@ namespace SistemaChamadoHospitalWinForms
 
         private void CadastroChamadoForm_Load(object sender, EventArgs e)
         {
+            MessageBox.Show("ID logado: " + Sessao.Id);
+
+
             cmbPrioridade.Items.Add("Alta");
             cmbPrioridade.Items.Add("Média");
             cmbPrioridade.Items.Add("Baixa");
@@ -36,6 +39,8 @@ namespace SistemaChamadoHospitalWinForms
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("Sessão.Id no CadastroChamadoForm: " + Sessao.Id);
+
             try
             {
                 var chamado = new Chamado

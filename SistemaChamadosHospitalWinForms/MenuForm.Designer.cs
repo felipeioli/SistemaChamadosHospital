@@ -42,7 +42,7 @@
             btnCadastrarChamado.TabIndex = 0;
             btnCadastrarChamado.Text = "Cadastro de Chamado";
             btnCadastrarChamado.UseVisualStyleBackColor = true;
-            btnCadastrarChamado.Click += btnCadastroChamado_Click;
+            btnCadastrarChamado.Click += btnCadastrarChamado_Click;
             // 
             // btnListarChamados
             // 

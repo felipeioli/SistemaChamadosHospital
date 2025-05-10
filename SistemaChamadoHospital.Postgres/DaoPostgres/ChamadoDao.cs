@@ -16,10 +16,14 @@ namespace SistemaChamadoHospitalPostgres.DaoPostgres
         {
             using (var conn = Conexao.ObterConexao())
             {
-                var cmd = new NpgsqlCommand("INSERT INTO chamado (status, prioridade, descricao) VALUES (@status, @prioridade, @descricao)", conn);
+                var cmd = new NpgsqlCommand("INSERT INTO chamado (status, prioridade, descricao, data_abertura, fk_usuario_id_usuario) VALUES (@status, @prioridade, @descricao, @data_abertura, @usuario)", conn);
                 cmd.Parameters.AddWithValue("status", chamado.Status);
                 cmd.Parameters.AddWithValue("prioridade", chamado.Prioridade);
                 cmd.Parameters.AddWithValue("descricao", chamado.Descricao);
+                cmd.Parameters.AddWithValue("data_abertura", chamado.DataAbertura);
+                cmd.Parameters.AddWithValue("usuario", chamado.IdUsuario);
+
+                cmd.ExecuteNonQuery();
             }
         }
 
@@ -59,6 +63,7 @@ namespace SistemaChamadoHospitalPostgres.DaoPostgres
                 cmd.Parameters.AddWithValue("prioridade", chamado.Prioridade);
                 cmd.Parameters.AddWithValue("descricao", chamado.Descricao);
                 cmd.Parameters.AddWithValue("id", chamado.Id);
+                cmd.ExecuteNonQuery();
             }
         }
 
@@ -82,7 +87,6 @@ namespace SistemaChamadoHospitalPostgres.DaoPostgres
             cmd.Parameters.AddWithValue("status", "Fechado");
             cmd.Parameters.AddWithValue("fechamento", dataFechamento);
             cmd.Parameters.AddWithValue("id", idChamado);
-
             cmd.ExecuteNonQuery();
         }
 
