@@ -38,7 +38,6 @@ namespace SistemaChamadoHospitalWinForms
 
                 dgvChamados.DataSource = listaChamados;
 
-                // Oculta colunas que não devem aparecer na listagem
                 if (dgvChamados.Columns.Contains("IdUsuario"))
                     dgvChamados.Columns["IdUsuario"].Visible = false;
 
