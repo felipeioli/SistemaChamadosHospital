@@ -31,14 +31,15 @@
             // btnCadastrarChamado
             // 
             btnCadastrarChamado.BackColor = Color.FromArgb(52, 73, 94);
+            btnCadastrarChamado.Dock = DockStyle.Top;
             btnCadastrarChamado.FlatAppearance.BorderSize = 0;
             btnCadastrarChamado.FlatStyle = FlatStyle.Flat;
             btnCadastrarChamado.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             btnCadastrarChamado.ForeColor = Color.White;
-            btnCadastrarChamado.Location = new Point(-1, 153);
+            btnCadastrarChamado.Location = new Point(20, 174);
             btnCadastrarChamado.Margin = new Padding(0);
             btnCadastrarChamado.Name = "btnCadastrarChamado";
-            btnCadastrarChamado.Size = new Size(414, 129);
+            btnCadastrarChamado.Size = new Size(372, 129);
             btnCadastrarChamado.TabIndex = 0;
             btnCadastrarChamado.Text = "CADASTRAR CHAMADO";
             btnCadastrarChamado.UseVisualStyleBackColor = false;
@@ -47,13 +48,14 @@
             // btnListarChamados
             // 
             btnListarChamados.BackColor = Color.FromArgb(52, 73, 94);
+            btnListarChamados.Dock = DockStyle.Top;
             btnListarChamados.FlatAppearance.BorderSize = 0;
             btnListarChamados.FlatStyle = FlatStyle.Flat;
             btnListarChamados.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             btnListarChamados.ForeColor = Color.White;
-            btnListarChamados.Location = new Point(-1, 282);
+            btnListarChamados.Location = new Point(20, 303);
             btnListarChamados.Name = "btnListarChamados";
-            btnListarChamados.Size = new Size(414, 129);
+            btnListarChamados.Size = new Size(372, 129);
             btnListarChamados.TabIndex = 1;
             btnListarChamados.Text = "LISTAR CHAMADOS";
             btnListarChamados.UseVisualStyleBackColor = false;
@@ -62,13 +64,14 @@
             // btnFecharChamado
             // 
             btnFecharChamado.BackColor = Color.FromArgb(52, 73, 94);
+            btnFecharChamado.Dock = DockStyle.Top;
             btnFecharChamado.FlatAppearance.BorderSize = 0;
             btnFecharChamado.FlatStyle = FlatStyle.Flat;
             btnFecharChamado.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             btnFecharChamado.ForeColor = Color.White;
-            btnFecharChamado.Location = new Point(-1, 411);
+            btnFecharChamado.Location = new Point(20, 432);
             btnFecharChamado.Name = "btnFecharChamado";
-            btnFecharChamado.Size = new Size(414, 129);
+            btnFecharChamado.Size = new Size(372, 129);
             btnFecharChamado.TabIndex = 2;
             btnFecharChamado.Text = "FECHAR CHAMADO";
             btnFecharChamado.UseVisualStyleBackColor = false;
@@ -88,19 +91,20 @@
             panelMenu.Location = new Point(0, 0);
             panelMenu.Name = "panelMenu";
             panelMenu.Padding = new Padding(20);
-            panelMenu.Size = new Size(414, 668);
+            panelMenu.Size = new Size(414, 693);
             panelMenu.TabIndex = 3;
             // 
             // btnMinhaConta
             // 
             btnMinhaConta.BackColor = Color.FromArgb(52, 73, 94);
+            btnMinhaConta.Dock = DockStyle.Top;
             btnMinhaConta.FlatAppearance.BorderSize = 0;
             btnMinhaConta.FlatStyle = FlatStyle.Flat;
             btnMinhaConta.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             btnMinhaConta.ForeColor = Color.White;
-            btnMinhaConta.Location = new Point(-1, 534);
+            btnMinhaConta.Location = new Point(20, 561);
             btnMinhaConta.Name = "btnMinhaConta";
-            btnMinhaConta.Size = new Size(414, 129);
+            btnMinhaConta.Size = new Size(372, 129);
             btnMinhaConta.TabIndex = 2;
             btnMinhaConta.Text = "MINHA CONTA";
             btnMinhaConta.UseVisualStyleBackColor = false;
@@ -123,7 +127,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(20, 20);
             panel1.Name = "panel1";
-            panel1.Size = new Size(372, 133);
+            panel1.Size = new Size(372, 154);
             panel1.TabIndex = 4;
             // 
             // panelConteudo
@@ -132,7 +136,7 @@
             panelConteudo.Dock = DockStyle.Fill;
             panelConteudo.Location = new Point(414, 0);
             panelConteudo.Name = "panelConteudo";
-            panelConteudo.Size = new Size(848, 668);
+            panelConteudo.Size = new Size(848, 693);
             panelConteudo.TabIndex = 4;
             // 
             // MenuForm
@@ -140,7 +144,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(240, 245, 250);
-            ClientSize = new Size(1262, 668);
+            ClientSize = new Size(1262, 693);
             Controls.Add(panelConteudo);
             Controls.Add(panelMenu);
             MinimumSize = new Size(600, 400);

@@ -63,7 +63,7 @@
             lblTipo.Location = new Point(40, 226);
             lblTipo.Name = "lblTipo";
             lblTipo.Size = new Size(135, 23);
-            lblTipo.TabIndex = 2;
+            lblTipo.TabIndex = 4;
             lblTipo.Text = "Tipo de Acesso:*";
             // 
             // txtNome
@@ -99,7 +99,7 @@
             cmbTipo.Location = new Point(40, 252);
             cmbTipo.Name = "cmbTipo";
             cmbTipo.Size = new Size(320, 31);
-            cmbTipo.TabIndex = 3;
+            cmbTipo.TabIndex = 4;
             cmbTipo.SelectedIndexChanged += cmbTipo_SelectedIndexChanged;
             // 
             // btnSalvar
@@ -124,7 +124,7 @@
             lblAreaTrabalho.Location = new Point(40, 297);
             lblAreaTrabalho.Name = "lblAreaTrabalho";
             lblAreaTrabalho.Size = new Size(147, 23);
-            lblAreaTrabalho.TabIndex = 4;
+            lblAreaTrabalho.TabIndex = 5;
             lblAreaTrabalho.Text = "Área de Trabalho*";
             lblAreaTrabalho.Visible = false;
             // 
@@ -137,7 +137,7 @@
             txtAreaTrabalho.Location = new Point(40, 323);
             txtAreaTrabalho.Name = "txtAreaTrabalho";
             txtAreaTrabalho.Size = new Size(320, 30);
-            txtAreaTrabalho.TabIndex = 4;
+            txtAreaTrabalho.TabIndex = 5;
             txtAreaTrabalho.Visible = false;
             // 
             // lklTelaLogin
@@ -186,7 +186,7 @@
             lblSenha.Location = new Point(40, 158);
             lblSenha.Name = "lblSenha";
             lblSenha.Size = new Size(68, 23);
-            lblSenha.TabIndex = 5;
+            lblSenha.TabIndex = 3;
             lblSenha.Text = "Senha:*";
             // 
             // txtSenha
@@ -199,7 +199,7 @@
             txtSenha.Name = "txtSenha";
             txtSenha.PasswordChar = '●';
             txtSenha.Size = new Size(320, 30);
-            txtSenha.TabIndex = 5;
+            txtSenha.TabIndex = 3;
             // 
             // CadastroForm
             // 

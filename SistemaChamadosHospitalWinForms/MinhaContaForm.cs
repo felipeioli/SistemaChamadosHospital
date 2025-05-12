@@ -54,15 +54,30 @@ namespace SistemaChamadoHospitalWinForms
         {
             try
             {
-                var usuario = new Usuario
+                if (Sessao.Tipo == "usuario")
                 {
-                    Id = Sessao.Id,
-                    Nome = txtNome.Text,
-                    Email = txtEmail.Text,
-                    AreaTrabalho = txtAreaTrabalho.Text
-                };
+                    var usuario = new Usuario
+                    {
+                        Id = Sessao.Id,
+                        Nome = txtNome.Text,
+                        Email = txtEmail.Text,
+                        AreaTrabalho = txtAreaTrabalho.Text
+                    };
 
-                _usuarioService.Atualizar(usuario);
+                    new UsuarioService(new UsuarioDao()).Atualizar(usuario);
+                }
+                else if (Sessao.Tipo == "tecnico")
+                {
+                    var tecnico = new Tecnico
+                    {
+                        Id = Sessao.Id,
+                        Nome = txtNome.Text,
+                        Email = txtEmail.Text
+                    };
+
+                    new TecnicoService(new TecnicoDao()).Atualizar(tecnico);
+                }
+
                 MessageBox.Show("Dados atualizados com sucesso!");
             }
             catch (Exception ex)
@@ -78,7 +93,15 @@ namespace SistemaChamadoHospitalWinForms
             {
                 try
                 {
-                    _usuarioService.Deletar(Sessao.Id);
+                    if (Sessao.Tipo == "usuario")
+                    {
+                        new UsuarioService(new UsuarioDao()).Deletar(Sessao.Id);
+                    }
+                    else if (Sessao.Tipo == "tecnico")
+                    {
+                        new TecnicoService(new TecnicoDao()).Deletar(Sessao.Id);
+                    }
+
                     MessageBox.Show("Conta excluída!");
                     Application.Exit();
                 }
@@ -88,5 +111,6 @@ namespace SistemaChamadoHospitalWinForms
                 }
             }
         }
+
     }
 }
