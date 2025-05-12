@@ -11,5 +11,8 @@ namespace SistemaChamadoHospital.Dao
     {
         public void Inserir(Usuario u);
         public List<Usuario> ListarTodos();
+        public Usuario ObterPorId(int id);
+        public void Atualizar(Usuario u);
+        public void Deletar(int id);
     }
 }

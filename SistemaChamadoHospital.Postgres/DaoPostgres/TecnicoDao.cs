@@ -31,7 +31,73 @@ namespace SistemaChamadoHospitalPostgres.DaoPostgres
                 throw new Exception("Erro ao inserir técnico no banco de dados: " + ex.Message, ex);
             }
         }
+        public Tecnico ObterPorId(int id)
+        {
+            Tecnico tecnico = null;
+            try
+            {
+                using (var conn = Conexao.ObterConexao())
+                {
+                    var cmd = new NpgsqlCommand(
+                        "SELECT id_tecnico, nome, email FROM tecnico WHERE id_tecnico = @id", conn);
+                    cmd.Parameters.AddWithValue("id", id);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            tecnico = new Tecnico
+                            {
+                                Id = reader.GetInt32(0),
+                                Nome = reader.GetString(1),
+                                Email = reader.GetString(2)
+                            };
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao obter técnico por ID: " + ex.Message, ex);
+            }
+            return tecnico;
+        }
 
+        public void Atualizar(Tecnico tecnico)
+        {
+            try
+            {
+                using (var conn = Conexao.ObterConexao())
+                {
+                    var cmd = new NpgsqlCommand(
+                        "UPDATE tecnico SET nome = @nome, email = @email WHERE id_tecnico = @id", conn);
+                    cmd.Parameters.AddWithValue("id", tecnico.Id);
+                    cmd.Parameters.AddWithValue("nome", tecnico.Nome);
+                    cmd.Parameters.AddWithValue("email", tecnico.Email);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao atualizar técnico no banco de dados: " + ex.Message, ex);
+            }
+        }
+
+        public void Deletar(int id)
+        {
+            try
+            {
+                using (var conn = Conexao.ObterConexao())
+                {
+                    var cmd = new NpgsqlCommand("DELETE FROM tecnico WHERE id_tecnico = @id", conn);
+                    cmd.Parameters.AddWithValue("id", id);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao deletar técnico no banco de dados: " + ex.Message, ex);
+            }
+        }
         public List<Tecnico> ListarTodos()
         {
             var tecnicos = new List<Tecnico>();

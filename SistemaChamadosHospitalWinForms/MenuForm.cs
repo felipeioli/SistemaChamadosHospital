@@ -20,21 +20,24 @@ namespace SistemaChamadoHospitalWinForms
 
         private void btnCadastrarChamado_Click(object sender, EventArgs e)
         {
-            var form = new CadastroChamadoForm();
-            form.ShowDialog();
+            AbrirFormularioNoPainel(new CadastroChamadoForm());
         }
 
         private void btnListarChamados_Click(object sender, EventArgs e)
         {
-            var form = new ListagemChamadoForm();
-            form.ShowDialog();
+            AbrirFormularioNoPainel(new ListagemChamadoForm());
         }
 
         private void btnFecharChamado_Click(object sender, EventArgs e)
         {
-            var form = new FechamentoChamadoForm();
-            form.ShowDialog();
+            AbrirFormularioNoPainel(new FechamentoChamadoForm());
         }
+
+        private void btnMinhaConta_Click(object sender, EventArgs e)
+        {
+            AbrirFormularioNoPainel(new MinhaContaForm());
+        }
+
 
         private void MenuForm_Load(object sender, EventArgs e)
         {
@@ -49,5 +52,16 @@ namespace SistemaChamadoHospitalWinForms
                 btnFecharChamado.Visible = true;
             }
         }
+
+        private void AbrirFormularioNoPainel(Form formulario)
+        {
+            panelConteudo.Controls.Clear();
+            formulario.TopLevel = false;
+            formulario.FormBorderStyle = FormBorderStyle.None;
+            formulario.Dock = DockStyle.Fill;
+            panelConteudo.Controls.Add(formulario);
+            formulario.Show();
+        }
+
     }
 }

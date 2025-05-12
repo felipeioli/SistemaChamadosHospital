@@ -17,95 +17,140 @@
 
         private void InitializeComponent()
         {
-            this.btnCadastrarChamado = new System.Windows.Forms.Button();
-            this.btnListarChamados = new System.Windows.Forms.Button();
-            this.btnFecharChamado = new System.Windows.Forms.Button();
-            this.panelMenu = new System.Windows.Forms.Panel();
-            this.lblTitulo = new System.Windows.Forms.Label();
-            this.panelMenu.SuspendLayout();
-            this.SuspendLayout();
-
+            btnCadastrarChamado = new Button();
+            btnListarChamados = new Button();
+            btnFecharChamado = new Button();
+            panelMenu = new Panel();
+            btnMinhaConta = new Button();
+            lblTitulo = new Label();
+            panel1 = new Panel();
+            panelConteudo = new Panel();
+            panelMenu.SuspendLayout();
+            SuspendLayout();
+            // 
             // btnCadastrarChamado
-            this.btnCadastrarChamado.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnCadastrarChamado.FlatAppearance.BorderSize = 0;
-            this.btnCadastrarChamado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCadastrarChamado.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnCadastrarChamado.ForeColor = System.Drawing.Color.White;
-            this.btnCadastrarChamado.Location = new System.Drawing.Point(50, 100);
-            this.btnCadastrarChamado.Name = "btnCadastrarChamado";
-            this.btnCadastrarChamado.Size = new System.Drawing.Size(300, 50);
-            this.btnCadastrarChamado.TabIndex = 0;
-            this.btnCadastrarChamado.Text = "CADASTRAR CHAMADO";
-            this.btnCadastrarChamado.UseVisualStyleBackColor = false;
-            this.btnCadastrarChamado.Click += new System.EventHandler(this.btnCadastrarChamado_Click);
-
+            // 
+            btnCadastrarChamado.BackColor = Color.FromArgb(52, 73, 94);
+            btnCadastrarChamado.FlatAppearance.BorderSize = 0;
+            btnCadastrarChamado.FlatStyle = FlatStyle.Flat;
+            btnCadastrarChamado.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            btnCadastrarChamado.ForeColor = Color.White;
+            btnCadastrarChamado.Location = new Point(-1, 153);
+            btnCadastrarChamado.Margin = new Padding(0);
+            btnCadastrarChamado.Name = "btnCadastrarChamado";
+            btnCadastrarChamado.Size = new Size(414, 129);
+            btnCadastrarChamado.TabIndex = 0;
+            btnCadastrarChamado.Text = "CADASTRAR CHAMADO";
+            btnCadastrarChamado.UseVisualStyleBackColor = false;
+            btnCadastrarChamado.Click += btnCadastrarChamado_Click;
+            // 
             // btnListarChamados
-            this.btnListarChamados.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnListarChamados.FlatAppearance.BorderSize = 0;
-            this.btnListarChamados.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnListarChamados.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnListarChamados.ForeColor = System.Drawing.Color.White;
-            this.btnListarChamados.Location = new System.Drawing.Point(50, 180);
-            this.btnListarChamados.Name = "btnListarChamados";
-            this.btnListarChamados.Size = new System.Drawing.Size(300, 50);
-            this.btnListarChamados.TabIndex = 1;
-            this.btnListarChamados.Text = "LISTAR CHAMADOS";
-            this.btnListarChamados.UseVisualStyleBackColor = false;
-            this.btnListarChamados.Click += new System.EventHandler(this.btnListarChamados_Click);
-
+            // 
+            btnListarChamados.BackColor = Color.FromArgb(52, 73, 94);
+            btnListarChamados.FlatAppearance.BorderSize = 0;
+            btnListarChamados.FlatStyle = FlatStyle.Flat;
+            btnListarChamados.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            btnListarChamados.ForeColor = Color.White;
+            btnListarChamados.Location = new Point(-1, 282);
+            btnListarChamados.Name = "btnListarChamados";
+            btnListarChamados.Size = new Size(414, 129);
+            btnListarChamados.TabIndex = 1;
+            btnListarChamados.Text = "LISTAR CHAMADOS";
+            btnListarChamados.UseVisualStyleBackColor = false;
+            btnListarChamados.Click += btnListarChamados_Click;
+            // 
             // btnFecharChamado
-            this.btnFecharChamado.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnFecharChamado.FlatAppearance.BorderSize = 0;
-            this.btnFecharChamado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFecharChamado.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnFecharChamado.ForeColor = System.Drawing.Color.White;
-            this.btnFecharChamado.Location = new System.Drawing.Point(50, 260);
-            this.btnFecharChamado.Name = "btnFecharChamado";
-            this.btnFecharChamado.Size = new System.Drawing.Size(300, 50);
-            this.btnFecharChamado.TabIndex = 2;
-            this.btnFecharChamado.Text = "FECHAR CHAMADO";
-            this.btnFecharChamado.UseVisualStyleBackColor = false;
-            this.btnFecharChamado.Click += new System.EventHandler(this.btnFecharChamado_Click);
-
+            // 
+            btnFecharChamado.BackColor = Color.FromArgb(52, 73, 94);
+            btnFecharChamado.FlatAppearance.BorderSize = 0;
+            btnFecharChamado.FlatStyle = FlatStyle.Flat;
+            btnFecharChamado.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            btnFecharChamado.ForeColor = Color.White;
+            btnFecharChamado.Location = new Point(-1, 411);
+            btnFecharChamado.Name = "btnFecharChamado";
+            btnFecharChamado.Size = new Size(414, 129);
+            btnFecharChamado.TabIndex = 2;
+            btnFecharChamado.Text = "FECHAR CHAMADO";
+            btnFecharChamado.UseVisualStyleBackColor = false;
+            btnFecharChamado.Click += btnFecharChamado_Click;
+            // 
             // panelMenu
-            this.panelMenu.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panelMenu.BackColor = System.Drawing.Color.White;
-            this.panelMenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelMenu.Controls.Add(this.lblTitulo);
-            this.panelMenu.Controls.Add(this.btnCadastrarChamado);
-            this.panelMenu.Controls.Add(this.btnFecharChamado);
-            this.panelMenu.Controls.Add(this.btnListarChamados);
-            this.panelMenu.Location = new System.Drawing.Point(200, 50);
-            this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Padding = new System.Windows.Forms.Padding(20);
-            this.panelMenu.Size = new System.Drawing.Size(400, 400);
-            this.panelMenu.TabIndex = 3;
-
+            // 
+            panelMenu.BackColor = Color.FromArgb(44, 62, 80);
+            panelMenu.BorderStyle = BorderStyle.FixedSingle;
+            panelMenu.Controls.Add(btnMinhaConta);
+            panelMenu.Controls.Add(btnFecharChamado);
+            panelMenu.Controls.Add(lblTitulo);
+            panelMenu.Controls.Add(btnListarChamados);
+            panelMenu.Controls.Add(btnCadastrarChamado);
+            panelMenu.Controls.Add(panel1);
+            panelMenu.Dock = DockStyle.Left;
+            panelMenu.Location = new Point(0, 0);
+            panelMenu.Name = "panelMenu";
+            panelMenu.Padding = new Padding(20);
+            panelMenu.Size = new Size(414, 668);
+            panelMenu.TabIndex = 3;
+            // 
+            // btnMinhaConta
+            // 
+            btnMinhaConta.BackColor = Color.FromArgb(52, 73, 94);
+            btnMinhaConta.FlatAppearance.BorderSize = 0;
+            btnMinhaConta.FlatStyle = FlatStyle.Flat;
+            btnMinhaConta.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            btnMinhaConta.ForeColor = Color.White;
+            btnMinhaConta.Location = new Point(-1, 534);
+            btnMinhaConta.Name = "btnMinhaConta";
+            btnMinhaConta.Size = new Size(414, 129);
+            btnMinhaConta.TabIndex = 2;
+            btnMinhaConta.Text = "MINHA CONTA";
+            btnMinhaConta.UseVisualStyleBackColor = false;
+            btnMinhaConta.Click += btnMinhaConta_Click;
+            // 
             // lblTitulo
-            this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblTitulo.Location = new System.Drawing.Point(50, 30);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(300, 28);
-            this.lblTitulo.TabIndex = 3;
-            this.lblTitulo.Text = "MENU PRINCIPAL";
-            this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-
+            // 
+            lblTitulo.AutoSize = true;
+            lblTitulo.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            lblTitulo.ForeColor = Color.White;
+            lblTitulo.Location = new Point(107, 42);
+            lblTitulo.Name = "lblTitulo";
+            lblTitulo.Size = new Size(178, 28);
+            lblTitulo.TabIndex = 3;
+            lblTitulo.Text = "MENU PRINCIPAL";
+            lblTitulo.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // panel1
+            // 
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(20, 20);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(372, 133);
+            panel1.TabIndex = 4;
+            // 
+            // panelConteudo
+            // 
+            panelConteudo.BackColor = Color.White;
+            panelConteudo.Dock = DockStyle.Fill;
+            panelConteudo.Location = new Point(414, 0);
+            panelConteudo.Name = "panelConteudo";
+            panelConteudo.Size = new Size(848, 668);
+            panelConteudo.TabIndex = 4;
+            // 
             // MenuForm
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
-            this.ClientSize = new System.Drawing.Size(800, 500);
-            this.Controls.Add(this.panelMenu);
-            this.MinimumSize = new System.Drawing.Size(600, 400);
-            this.Name = "MenuForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Menu - Sistema Hospitalar";
-            this.Load += new System.EventHandler(this.MenuForm_Load);
-            this.panelMenu.ResumeLayout(false);
-            this.panelMenu.PerformLayout();
-            this.ResumeLayout(false);
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(240, 245, 250);
+            ClientSize = new Size(1262, 668);
+            Controls.Add(panelConteudo);
+            Controls.Add(panelMenu);
+            MinimumSize = new Size(600, 400);
+            Name = "MenuForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Menu - Sistema Chamado";
+            Load += MenuForm_Load;
+            panelMenu.ResumeLayout(false);
+            panelMenu.PerformLayout();
+            ResumeLayout(false);
         }
 
         #endregion
@@ -115,5 +160,8 @@
         private System.Windows.Forms.Button btnFecharChamado;
         private System.Windows.Forms.Panel panelMenu;
         private System.Windows.Forms.Label lblTitulo;
+        private Panel panelConteudo;
+        private Button btnMinhaConta;
+        private Panel panel1;
     }
 }

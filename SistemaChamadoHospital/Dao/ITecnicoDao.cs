@@ -11,5 +11,8 @@ namespace SistemaChamadoHospital.Dao
     {
         void Inserir(Tecnico tecnico);
         public List<Tecnico> ListarTodos();
+        Tecnico ObterPorId(int id);
+        void Atualizar(Tecnico tecnico);
+        void Deletar(int id);
     }
 }

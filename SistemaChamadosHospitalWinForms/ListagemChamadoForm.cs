@@ -49,5 +49,10 @@ namespace SistemaChamadoHospitalWinForms
                 MessageBox.Show("Erro ao carregar chamados: " + ex.Message);
             }
         }
+
+        private void ListagemChamadoForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

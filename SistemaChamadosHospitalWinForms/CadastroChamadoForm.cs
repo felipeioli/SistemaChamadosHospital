@@ -22,12 +22,15 @@ namespace SistemaChamadoHospitalWinForms
 
         private void CadastroChamadoForm_Load(object sender, EventArgs e)
         {
-            MessageBox.Show("ID logado: " + Sessao.Id);
-
 
             cmbPrioridade.Items.Add("Alta");
             cmbPrioridade.Items.Add("Média");
             cmbPrioridade.Items.Add("Baixa");
+
+            panelCadastro.Location = new Point(
+            (this.ClientSize.Width - panelCadastro.Width) / 2,
+            (this.ClientSize.Height - panelCadastro.Height) / 2
+    );
         }
 
         private void LimparCampos()
@@ -39,7 +42,6 @@ namespace SistemaChamadoHospitalWinForms
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Sessão.Id no CadastroChamadoForm: " + Sessao.Id);
 
             try
             {

@@ -52,7 +52,7 @@ namespace SistemaChamadoHospitalWinForms
                     Sessao.Tipo = "usuario";
 
                     this.Hide();
-                    MessageBox.Show($"Bem-vindo, {usuario.Nome}!");
+
                     new MenuForm().ShowDialog();
                     this.Close();
                 }
@@ -72,7 +72,7 @@ namespace SistemaChamadoHospitalWinForms
                     Sessao.Tipo = "tecnico";
 
                     this.Hide();
-                    MessageBox.Show($"Bem-vindo, técnico {tecnico.Nome}!");
+
                     new MenuForm().ShowDialog();
                     this.Close();
                 }

@@ -19,15 +19,32 @@ namespace SistemaChamadoHospital.Service
             _usuarioDao = usuarioDao;
             _usuarioValidation = new UsuarioValidation();
         }
+
         public void Inserir(Usuario u)
         {
             _usuarioDao.Inserir(u);
         }
 
+        public Usuario ObterPorId(int id)
+        {
+            return _usuarioDao.ObterPorId(id);
+        }
+
+        public void Atualizar(Usuario u)
+        {
+            _usuarioValidation.Validar(u);
+            _usuarioDao.Atualizar(u);
+        }
+
+        public void Deletar(int id)
+        {
+            _usuarioDao.Deletar(id);
+        }
 
         public List<Usuario> ListarTodos()
         {
             return _usuarioDao.ListarTodos();
         }
+
     }
 }
