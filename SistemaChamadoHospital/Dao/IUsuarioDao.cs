@@ -14,5 +14,7 @@ namespace SistemaChamadoHospital.Dao
         public Usuario ObterPorId(int id);
         public void Atualizar(Usuario u);
         public void Deletar(int id);
+        Usuario ObterPorEmailESenha(string email, string senhaHash);
+
     }
 }

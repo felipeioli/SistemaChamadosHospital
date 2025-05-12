@@ -14,5 +14,6 @@ namespace SistemaChamadoHospital.Dao
         Tecnico ObterPorId(int id);
         void Atualizar(Tecnico tecnico);
         void Deletar(int id);
+        Tecnico ObterPorEmailESenha(string email, string senhaHash);
     }
 }

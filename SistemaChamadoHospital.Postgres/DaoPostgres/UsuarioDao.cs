@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Npgsql;
 using SistemaChamadoHospital.Dao;
 using SistemaChamadoHospital.Models;
+using SistemaChamadoHospital.Utils;
 
 namespace SistemaChamadoHospitalPostgres.DaoPostgres
 {
@@ -19,10 +20,11 @@ namespace SistemaChamadoHospitalPostgres.DaoPostgres
             {
                 using (var conn = Conexao.ObterConexao())
                 {
-                    var cmd = new NpgsqlCommand("INSERT INTO usuario (nome, email, area_trabalho) VALUES (@nome, @email, @area_trabalho)", conn);
+                    var cmd = new NpgsqlCommand("INSERT INTO usuario (nome, email, area_trabalho, senha) VALUES (@nome, @email, @area, @senha)", conn);
                     cmd.Parameters.AddWithValue("nome", u.Nome);
                     cmd.Parameters.AddWithValue("email", u.Email);
-                    cmd.Parameters.AddWithValue("area_trabalho", u.AreaTrabalho);
+                    cmd.Parameters.AddWithValue("area", u.AreaTrabalho);
+                    cmd.Parameters.AddWithValue("senha", u.Senha);
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -114,7 +116,7 @@ namespace SistemaChamadoHospitalPostgres.DaoPostgres
             {
                 using (var conn = Conexao.ObterConexao())
                 {
-                    var cmd = new NpgsqlCommand("SELECT id_usuario, nome, email, area_trabalho FROM usuario", conn);
+                    var cmd = new NpgsqlCommand("SELECT id_usuario, nome, email, area_trabalho, senha FROM usuario", conn);
                     using (var reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
@@ -124,7 +126,8 @@ namespace SistemaChamadoHospitalPostgres.DaoPostgres
                                 Id = reader.GetInt32(0),
                                 Nome = reader.GetString(1),
                                 Email = reader.GetString(2),
-                                AreaTrabalho = reader.GetString(3)
+                                AreaTrabalho = reader.GetString(3),
+                                Senha = reader.GetString(4)
                             });
                         }
                     }
@@ -137,6 +140,39 @@ namespace SistemaChamadoHospitalPostgres.DaoPostgres
 
             return usuarios;
         }
+        public Usuario ObterPorEmailESenha(string email, string senhaHash)
+        {
+            Usuario usuario = null;
+            try
+            {
+                using (var conn = Conexao.ObterConexao())
+                {
+                    var cmd = new NpgsqlCommand("SELECT id_usuario, nome, email, area_trabalho, senha FROM usuario WHERE email = @email AND senha = @senha", conn);
+                    cmd.Parameters.AddWithValue("email", email);
+                    cmd.Parameters.AddWithValue("senha", senhaHash);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            usuario = new Usuario
+                            {
+                                Id = reader.GetInt32(0),
+                                Nome = reader.GetString(1),
+                                Email = reader.GetString(2),
+                                AreaTrabalho = reader.GetString(3),
+                                Senha = reader.GetString(4)
+                            };
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao buscar usuário por email e senha: " + ex.Message, ex);
+            }
+            return usuario;
+        }
+
     }
 }
 

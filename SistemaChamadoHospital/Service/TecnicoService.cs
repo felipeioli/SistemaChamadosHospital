@@ -45,5 +45,11 @@ namespace SistemaChamadoHospital.Service
         {
             return _tecnicoDao.ListarTodos();
         }
+
+        public Tecnico ObterPorEmailESenha(string email, string senhaHash)
+        {
+            return _tecnicoDao.ObterPorEmailESenha(email, senhaHash);
+        }
+
     }
 }

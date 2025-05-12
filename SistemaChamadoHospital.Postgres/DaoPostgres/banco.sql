@@ -2,13 +2,15 @@
 id_usuario SERIAL PRIMARY KEY,
 nome VARCHAR(50) NOT NULL,
 email VARCHAR(35),
-area_trabalho VARCHAR(35)
+area_trabalho VARCHAR(35),
+senha VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE tecnico(
 id_tecnico SERIAL PRIMARY KEY,
 nome VARCHAR(50) NOT NULL,
-email VARCHAR(50)
+email VARCHAR(50),
+senha VARCHAR(50) NOT NULL,
 );
 
 CREATE TABLE solucao(

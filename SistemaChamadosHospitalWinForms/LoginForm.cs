@@ -1,27 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using SistemaChamadoHospital.Service;
 using SistemaChamadoHospitalPostgres.DaoPostgres;
+using SistemaChamadoHospital.Utils;
 
 namespace SistemaChamadoHospitalWinForms
 {
     public partial class LoginForm : Form
     {
+        private UsuarioService _usuarioService;
+        private TecnicoService _tecnicoService;
+
         public LoginForm()
         {
             InitializeComponent();
-        }
-
-        private void cmbTipo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+            _usuarioService = new UsuarioService(new UsuarioDao());
+            _tecnicoService = new TecnicoService(new TecnicoDao());
         }
 
         private void LoginForm_Load(object sender, EventArgs e)
@@ -33,60 +28,57 @@ namespace SistemaChamadoHospitalWinForms
         private void btnEntrar_Click(object sender, EventArgs e)
         {
             string email = txtEmail.Text.Trim();
+            string senha = txtSenha.Text;
             string tipo = cmbTipo.SelectedItem?.ToString();
 
-            if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(tipo))
+            if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(senha) || string.IsNullOrWhiteSpace(tipo))
             {
                 MessageBox.Show("Preencha todos os campos.");
                 return;
             }
 
+            string senhaHash = SenhaUtil.GerarHash(senha);
+
             if (tipo == "Usuário")
             {
-                var usuarios = new UsuarioService(new UsuarioDao()).ListarTodos();
-                var usuario = usuarios.FirstOrDefault(u => u.Email == email);
+
+                var usuario = _usuarioService.ObterPorEmailESenha(email, senhaHash);
+                
                 if (usuario != null)
                 {
                     Sessao.Id = usuario.Id;
                     Sessao.Nome = usuario.Nome;
                     Sessao.Tipo = "usuario";
-
+                    new MenuForm().Show();
                     this.Hide();
-
-                    new MenuForm().ShowDialog();
-                    this.Close();
                 }
                 else
                 {
-                    MessageBox.Show("Usuário não encontrado.");
+                    MessageBox.Show("Usuário ou senha inválidos.");
                 }
             }
             else if (tipo == "Técnico")
             {
-                var tecnicos = new TecnicoService(new TecnicoDao()).ListarTodos();
-                var tecnico = tecnicos.FirstOrDefault(t => t.Email.ToLower() == email.ToLower());
+                var tecnico = _tecnicoService.ObterPorEmailESenha(email, senhaHash);
                 if (tecnico != null)
                 {
                     Sessao.Id = tecnico.Id;
                     Sessao.Nome = tecnico.Nome;
                     Sessao.Tipo = "tecnico";
-
+                    new MenuForm().Show();
                     this.Hide();
-
-                    new MenuForm().ShowDialog();
-                    this.Close();
                 }
                 else
                 {
-                    MessageBox.Show("Técnico não encontrado.");
+                    MessageBox.Show("Técnico ou senha inválidos.");
                 }
             }
         }
 
+
         private void lklRegistrar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            CadastroForm formCadastro = new CadastroForm();
-            formCadastro.ShowDialog();
+            new CadastroForm().Show();
             this.Hide();
         }
     }

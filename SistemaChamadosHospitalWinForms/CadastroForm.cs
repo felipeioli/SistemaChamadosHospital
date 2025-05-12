@@ -1,17 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using SistemaChamadoHospital.Models;
 using SistemaChamadoHospital.Service;
 using SistemaChamadoHospitalPostgres.DaoPostgres;
-using SistemaChamadoHospital.Models;
-
+using SistemaChamadoHospital.Utils;
 
 namespace SistemaChamadoHospitalWinForms
 {
@@ -36,33 +28,47 @@ namespace SistemaChamadoHospitalWinForms
             lblAreaTrabalho.Visible = false;
         }
 
+        private void cmbTipo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string tipo = cmbTipo.SelectedItem?.ToString();
+            bool mostrar = tipo == "Usuário";
+
+            txtAreaTrabalho.Visible = mostrar;
+            lblAreaTrabalho.Visible = mostrar;
+        }
+
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             string nome = txtNome.Text.Trim();
             string email = txtEmail.Text.Trim();
+            string senha = txtSenha.Text.Trim();
             string tipo = cmbTipo.SelectedItem?.ToString();
             string areaTrabalho = txtAreaTrabalho.Text.Trim();
 
-            if (string.IsNullOrWhiteSpace(nome) || string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(tipo))
+            if (string.IsNullOrWhiteSpace(nome) || string.IsNullOrWhiteSpace(email) ||
+                string.IsNullOrWhiteSpace(senha) || string.IsNullOrWhiteSpace(tipo))
             {
                 MessageBox.Show("Preencha todos os campos.");
                 return;
             }
 
-            if (tipo == "Usuário" && string.IsNullOrWhiteSpace(areaTrabalho))
-            {
-                MessageBox.Show("Preencha o campo Área de Trabalho.");
-                return;
-            }
+            string senhaHash = SenhaUtil.GerarHash(senha);
 
             try
             {
                 if (tipo == "Usuário")
                 {
+                    if (string.IsNullOrWhiteSpace(areaTrabalho))
+                    {
+                        MessageBox.Show("Preencha a Área de Trabalho.");
+                        return;
+                    }
+
                     _usuarioService.Inserir(new Usuario
                     {
                         Nome = nome,
                         Email = email,
+                        Senha = senhaHash,
                         AreaTrabalho = areaTrabalho
                     });
                 }
@@ -71,14 +77,13 @@ namespace SistemaChamadoHospitalWinForms
                     _tecnicoService.Inserir(new Tecnico
                     {
                         Nome = nome,
-                        Email = email
+                        Email = email,
+                        Senha = senhaHash
                     });
                 }
 
                 MessageBox.Show($"{tipo} cadastrado com sucesso!");
-                this.Hide();
-                LoginForm login = new LoginForm();
-                login.ShowDialog();
+                new LoginForm().Show();
                 this.Close();
             }
             catch (Exception ex)
@@ -87,22 +92,10 @@ namespace SistemaChamadoHospitalWinForms
             }
         }
 
-        private void cmbTipo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string tipo = cmbTipo.SelectedItem?.ToString();
-
-            bool mostrarAreaTrabalho = tipo == "Usuário";
-
-            txtAreaTrabalho.Visible = mostrarAreaTrabalho;
-            lblAreaTrabalho.Visible = mostrarAreaTrabalho;
-        }
-
         private void lklTelaLogin_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            LoginForm loginForm = new LoginForm();
-            loginForm.ShowDialog();
+            new LoginForm().Show();
             this.Close();
         }
     }
 }
-

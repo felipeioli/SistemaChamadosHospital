@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Npgsql;
 using SistemaChamadoHospital.Dao;
 using SistemaChamadoHospital.Models;
+using SistemaChamadoHospital.Utils;
 
 namespace SistemaChamadoHospitalPostgres.DaoPostgres
 {
@@ -17,12 +18,10 @@ namespace SistemaChamadoHospitalPostgres.DaoPostgres
             {
                 using (var conn = Conexao.ObterConexao())
                 {
-                    var cmd = new NpgsqlCommand(
-                        "INSERT INTO tecnico (nome, email) VALUES (@nome, @email)", conn);
-
+                    var cmd = new NpgsqlCommand("INSERT INTO tecnico (nome, email, senha) VALUES (@nome, @email, @senha)", conn);
                     cmd.Parameters.AddWithValue("nome", tecnico.Nome);
                     cmd.Parameters.AddWithValue("email", tecnico.Email);
-
+                    cmd.Parameters.AddWithValue("senha", tecnico.Senha);
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -38,8 +37,7 @@ namespace SistemaChamadoHospitalPostgres.DaoPostgres
             {
                 using (var conn = Conexao.ObterConexao())
                 {
-                    var cmd = new NpgsqlCommand(
-                        "SELECT id_tecnico, nome, email FROM tecnico WHERE id_tecnico = @id", conn);
+                    var cmd = new NpgsqlCommand("SELECT id_tecnico, nome, email, senha FROM tecnico WHERE id_tecnico = @id", conn);
                     cmd.Parameters.AddWithValue("id", id);
                     using (var reader = cmd.ExecuteReader())
                     {
@@ -49,7 +47,8 @@ namespace SistemaChamadoHospitalPostgres.DaoPostgres
                             {
                                 Id = reader.GetInt32(0),
                                 Nome = reader.GetString(1),
-                                Email = reader.GetString(2)
+                                Email = reader.GetString(2),
+                                Senha = reader.GetString(3)
                             };
                         }
                     }
@@ -61,6 +60,7 @@ namespace SistemaChamadoHospitalPostgres.DaoPostgres
             }
             return tecnico;
         }
+
 
         public void Atualizar(Tecnico tecnico)
         {
@@ -100,23 +100,24 @@ namespace SistemaChamadoHospitalPostgres.DaoPostgres
         }
         public List<Tecnico> ListarTodos()
         {
-            var tecnicos = new List<Tecnico>();
-
+            List<Tecnico> tecnicos = new List<Tecnico>();
             try
             {
                 using (var conn = Conexao.ObterConexao())
                 {
-                    var cmd = new NpgsqlCommand("SELECT id_tecnico, nome, email FROM tecnico", conn);
+                    var cmd = new NpgsqlCommand("SELECT id_tecnico, nome, email, senha FROM tecnico", conn); // senha incluída
                     using (var reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            tecnicos.Add(new Tecnico
+                            Tecnico tecnico = new Tecnico
                             {
                                 Id = reader.GetInt32(0),
                                 Nome = reader.GetString(1),
-                                Email = reader.GetString(2)
-                            });
+                                Email = reader.GetString(2),
+                                Senha = reader.GetString(3) // ← adicionado
+                            };
+                            tecnicos.Add(tecnico);
                         }
                     }
                 }
@@ -125,9 +126,40 @@ namespace SistemaChamadoHospitalPostgres.DaoPostgres
             {
                 throw new Exception("Erro ao listar técnicos: " + ex.Message, ex);
             }
-
             return tecnicos;
         }
+        public Tecnico ObterPorEmailESenha(string email, string senhaHash)
+        {
+            Tecnico tecnico = null;
+            try
+            {
+                using (var conn = Conexao.ObterConexao())
+                {
+                    var cmd = new NpgsqlCommand("SELECT id_tecnico, nome, email FROM tecnico WHERE email = @Email AND senha = @Senha", conn);
+                    cmd.Parameters.AddWithValue("Email", email);
+                    cmd.Parameters.AddWithValue("Senha", senhaHash);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            tecnico = new Tecnico
+                            {
+                                Id = reader.GetInt32(0),
+                                Nome = reader.GetString(1),
+                                Email = reader.GetString(2)
+                            };
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao buscar técnico por email e senha: " + ex.Message, ex);
+            }
+            return tecnico;
+        }
+
+
     }
- }
+}
 
